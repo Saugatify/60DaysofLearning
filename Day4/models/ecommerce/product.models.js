@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const productSchema = new monngose.Schema({
+const productSchema = new mongoose.Schema({
     name: {
         type: Strings,
         unique: true,
@@ -32,7 +32,6 @@ const productSchema = new monngose.Schema({
       owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-      },
-});
+      },});
 
 export const Product = mongoose.model("Product",productSchema);
