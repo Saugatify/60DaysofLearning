@@ -2,7 +2,7 @@ import { Client, GatewayIntentBits, Message } from "discord.js";
 import dotenv from "dotenv";
 
 dotenv.config({
-    path: '.env' // Corrected path to .env file
+    path: '.env'
 });
 
 const client = new Client({
