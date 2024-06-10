@@ -13,7 +13,7 @@ console.log("Environment Variables Loaded: ", process.env.MONGODB_URI);
 connectDB()
 .then(()=>{
     app.listen(process.env.PORT ||8000,()=>{
-        console.log("Running ");
+        console.log("Running");
     })
 })
 .catch((err)=>{
