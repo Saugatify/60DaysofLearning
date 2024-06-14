@@ -1,9 +1,9 @@
-import dotenv from 'dotenv';
-import { app } from './app.js';
-import connectDB from './db/index.js'; 
+import dotenv from "dotenv";
+import { app } from "./app.js";
+import connectDB from "./db/index.js";
 
 // Load environment variables from a file named .env
-dotenv.config({ path: './env' });
+dotenv.config({ path: "./env" });
 
 // Connect to the database and start the server
 connectDB()
@@ -16,11 +16,6 @@ connectDB()
   .catch((err) => {
     console.log("MONGO db connection failed !!!", err);
   });
-
-
-
-
-
 
 /*
 import express from 'express';
