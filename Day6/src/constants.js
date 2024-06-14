@@ -1,1 +1,1 @@
-export const DB_NAME ="demosaugat"
+export const DB_NAME = "videotube"

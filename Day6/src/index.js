@@ -1,76 +1,52 @@
-import dotenv from "dotenv";
-import connectDB from "./db/index.js";
+import dotenv from 'dotenv';
+import { app } from './app.js';
+import connectDB from './db/index.js'; 
 
-// Load environment variables from .env file
-dotenv.config({
-    path: './src/.env' // Corrected path to .env file
-});
+// Load environment variables from a file named .env
+dotenv.config({ path: './env' });
 
-// Debugging log
-console.log("Environment Variables Loaded: ", process.env.MONGODB_URI);
-
-// Connect to the database
+// Connect to the database and start the server
 connectDB()
-.then(()=>{
-    app.listen(process.env.PORT ||8000,()=>{
-        console.log("Running");
-    })
-})
-.catch((err)=>{
-    console.log("Failed",err);
-})
+  .then(() => {
+    const port = process.env.PORT || 8000;
+    app.listen(port, () => {
+      console.log(`⚙️ Server is running at port: ${port}`);
+    });
+  })
+  .catch((err) => {
+    console.log("MONGO db connection failed !!!", err);
+  });
 
 
 
 
 
 
+/*
+import express from 'express';
+import mongoose from 'mongoose';
 
+const app = express();
 
+(async () => {
+  try {
+    await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
+    app.on('error', (error) => {
+      console.log('ERRR: ', error);
+      throw error;
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import express from "express"
-// const app = express()
-
-// (async () => {
-//   try {
-//     await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`);
-//     app.on("error",(error)=>{
-//         console.log("ERR");
-//         throw error
-//     })
-
-//     app.listen(process.env.PORT,()=>{
-//         console.log("listening the port");
-//     })
-//   } catch (error) {
-//     console.log("ERROR", err);
-//     throw err;
-//   }
-// })();
+    const port = process.env.PORT || 8000;
+    app.listen(port, () => {
+      console.log(`App is listening on port ${port}`);
+    });
+  } catch (error) {
+    console.error('ERROR: ', error);
+    throw error;
+  }
+})();
+*/
