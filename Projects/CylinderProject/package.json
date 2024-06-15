@@ -1,0 +1,25 @@
+{
+  "name": "cylinderproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.1",
+    "node-telegram-bot-api": "^0.66.0",
+    "nodemon": "^3.1.3",
+    "telegraf": "^4.16.3",
+    "telegram": "^2.22.2"
+  },
+  "devDependencies": {
+    "@types/node-telegram-bot-api": "^0.64.6"
+  }
+}
