@@ -27,15 +27,24 @@ mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
 // Create a new Telegram bot instance
 const bot = new TelegramBot(token, { polling: true });
 
-bot.on('message', (msg) => {
+bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
-  const messageText = msg.text.toString().toLowerCase();
+  const messageText = msg.text ? msg.text.toString().toLowerCase() : '';
   const firstName = msg.chat.first_name;
 
+  if (msg.location) {
+    const latitude = msg.location.latitude;
+    const longitude = msg.location.longitude;
+    console.log(`Received location: Latitude ${latitude}, Longitude ${longitude}`);
+    bot.sendMessage(chatId, `Received location: Latitude ${latitude}, Longitude ${longitude}`);
+    // Handle further processing based on the received location
+    // Example: Save location data to MongoDB or perform location-based actions
+    return;
+  }
+
   // Check if the message contains "hello"
-  if (messageText.includes("hello")) {
-    bot.sendMessage(chatId, `Hello ${firstName}
-      Type Cylinder`);
+  if (messageText.includes("hello" || "hi")) {
+    bot.sendMessage(chatId, `Hello ${firstName}. Type 'cylinder' to proceed.`);
   }
 
   // Check if the message contains "cylinder"
